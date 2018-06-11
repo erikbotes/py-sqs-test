@@ -1,0 +1,5 @@
+# we don't want to be including the virtualenv..
+venv/
+
+__pycache__/
+*.pyc
