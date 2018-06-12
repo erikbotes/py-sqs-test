@@ -1,4 +1,4 @@
-Simple Python tool to play with SQS
+##Simple Python tool to play with SQS
 
 ####Installing an running:
 1. Have Python, pip and virtualenv installed
