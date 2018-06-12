@@ -1,12 +1,12 @@
 import boto3
 import os
-from settings import QUEUE_URL
+from settings import QUEUE_URL, AWS_REGION
 
 sqs = boto3.client(
     'sqs',
     aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
     aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
-    region_name='eu-west-1'
+    region_name=AWS_REGION
 )
 
 def send(message):
@@ -32,6 +32,8 @@ def receive():
         
         print('📩  Received message: %s' % message['Body'])
         print('📭  receipt handle: %s' % receipt_handle)
+
+        return message['Body'], receipt_handle
     else:
         print("No messages :'(")
 
