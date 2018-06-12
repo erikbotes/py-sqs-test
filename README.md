@@ -10,7 +10,8 @@
 `$ virtualenv --no-site-packages venv`
 5. Activate your new virtualenv:
 `$ source venv/bin/activate`
-6. Run Python in interactive mode with the script:
+6. `$ pip install -r requirements.txt`
+7. Run Python in interactive mode with the script:
 `$ python -i sqs.py`
 
 
