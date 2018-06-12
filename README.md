@@ -4,8 +4,8 @@
 1. Have Python, pip and virtualenv installed
 21. Clone the repo
 3. Settings:
-3.1 Export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables
-3.2 Edit `settings.py` to contain your queue URL.
+3.1. Export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables
+3.2. Edit `settings.py` to contain your queue URL.
 4. Create a virtual environment:
 `$ virtualenv --no-site-packages venv`
 5. Activate your new virtualenv:
