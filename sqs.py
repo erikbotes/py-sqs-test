@@ -1,7 +1,7 @@
 import boto3
 import os
+from settings import QUEUE_URL
 
-QUEUE_URL = 'https://sqs.eu-west-1.amazonaws.com/282415712953/erik'
 sqs = boto3.client(
     'sqs',
     aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
@@ -25,12 +25,15 @@ def receive():
         WaitTimeSeconds=0
     )
 
-    message = response['Messages'][0]
-    receipt_handle = message['ReceiptHandle']
+    if 'Messages' in response and len(response['Messages']) > 0:
+        message = response['Messages'][0]
+        receipt_handle = message['ReceiptHandle']
 
-    
-    print('📩 Received message: %s' % message)
-    print('📭 receipt handle: %s' % receipt_handle)
+        
+        print('📩  Received message: %s' % message['Body'])
+        print('📭  receipt handle: %s' % receipt_handle)
+    else:
+        print("No messages :'(")
 
 def delete(rx_handle):
     # Delete received message from queue
@@ -38,4 +41,4 @@ def delete(rx_handle):
         QueueUrl=QUEUE_URL,
         ReceiptHandle=rx_handle
     )
-    print('☠️ Deleted!')
+    print('☠️  Deleted!')
